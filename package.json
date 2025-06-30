@@ -1,11 +1,15 @@
 {
-  "name": "react-weather-app",
+  "name": "projetfinalreact",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://hafidjiou.github.io/projet-final-react",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "vite build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -13,6 +17,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.6.0",
+    "gh-pages": "^5.0.0",
     "vite": "^4.0.0"
   }
 }
