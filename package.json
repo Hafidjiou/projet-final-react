@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "homepage": "https://hafidjiou.github.io/projet-final-react",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
