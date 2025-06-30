@@ -1,7 +1,8 @@
-import React from 'react';
-
 export default function WeatherCard({ weather }) {
+  if (!weather || !weather.weather) return null;
+
   const { name, sys, main, weather: details, wind } = weather;
+
   return (
     <div className="card">
       <h2>{name}, {sys.country}</h2>
@@ -9,7 +10,7 @@ export default function WeatherCard({ weather }) {
       <p>🌡 {main.temp}°C</p>
       <p>💧 Humidité : {main.humidity}%</p>
       <p>💨 Vent : {wind.speed} km/h</p>
-      <img src={`https://openweathermap.org/img/wn/${details[0].icon}@2x.png`} alt="icon" />
+      <img src={`https://openweathermap.org/img/wn/${details[0].icon}@2x.png`} alt="Météo" />
     </div>
   );
 }

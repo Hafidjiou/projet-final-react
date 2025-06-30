@@ -1,27 +1,58 @@
 body {
   font-family: sans-serif;
   text-align: center;
-  background: #eef2f3;
+  background: #0033A0; /* 🔵 Bleu BIC */
   margin: 0;
   padding: 1rem;
+  min-height: 100vh;
+  color: white; /* Texte lisible sur fond foncé */
+}
+
+.app {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 input {
   padding: 0.5rem;
   margin-right: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+input:focus, button:focus {
+  outline: 2px solid #66ccff;
+  outline-offset: 2px;
 }
 
 button {
   padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: #0055FF;
+  border: none;
+  color: white;
+  border-radius: 5px;
 }
 
 .card, .forecast-grid .day {
   background: white;
+  color: #222;
   padding: 1rem;
   margin: 1rem auto;
   max-width: 300px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.card p {
+  margin: 0.5rem 0;
+}
+
+.card img,
+.forecast-grid .day img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
 }
 
 .forecast-grid {

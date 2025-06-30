@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import WeatherCard from './components/WeatherCard';
 import Forecast from './components/Forecast';
 
-const API_KEY = "YOUR_API_KEY"; // Remplace par ta clé API OpenWeather
+// 🔑 Mets ta vraie clé API ici
+const API_KEY = "3d681362ace642f8dbd71abbe1fae33c";
 
 export default function App() {
   const [city, setCity] = useState("");
@@ -10,11 +11,23 @@ export default function App() {
   const [forecast, setForecast] = useState([]);
 
   const fetchWeather = async () => {
+    if (!city.trim()) {
+      alert("Veuillez entrer une ville.");
+      return;
+    }
+
     try {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=fr&appid=${API_KEY}`
       );
       const data = await res.json();
+
+      if (data.cod !== 200) {
+        alert("Ville non trouvée !");
+        setWeather(null);
+        setForecast([]);
+        return;
+      }
 
       const forecastRes = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=fr&appid=${API_KEY}`
@@ -22,10 +35,13 @@ export default function App() {
       const forecastData = await forecastRes.json();
 
       setWeather(data);
+
+      // On garde une prévision toutes les 8 entrées (~1 par jour)
       const daily = forecastData.list.filter((_, idx) => idx % 8 === 0);
       setForecast(daily);
     } catch (error) {
       console.error("Erreur lors de la récupération des données météo :", error);
+      alert("Une erreur est survenue. Vérifiez votre connexion.");
     }
   };
 
@@ -45,3 +61,4 @@ export default function App() {
     </div>
   );
 }
+
